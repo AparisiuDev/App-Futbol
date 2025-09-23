@@ -33,8 +33,8 @@ namespace App_Futbol
 
         public int Edad
         {
-            get { return Edad; }
-            set { Edad = value; }
+            get { return _edad; }
+            set { _edad = value; }
         }
 
         public string Posicion
@@ -82,5 +82,16 @@ namespace App_Futbol
             Posicion = posicion;
             Nacionalidad = nacionalidad;
         }
+
+
+        // Metodo ToString
+        public override string ToString()
+        {
+            return $"Nombre: {Nombre}, Dorsal: {Dorsal}, Edad: {Edad}, Posición: {Posicion}, " +
+                $"Lesionado: {EsLesionado}, Goles: {Goles}, Asistencias: {Asistencias}, Nacionalidad: {Nacionalidad}";
+        }
+
+
+
     }
 }
