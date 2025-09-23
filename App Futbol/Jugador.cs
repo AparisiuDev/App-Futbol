@@ -17,6 +17,7 @@ namespace App_Futbol
         private int _goles;
         private int _asistencias;
         private string _nacionalidad;
+        private Equipo _equipo;
 
         // Propiedades
         public string Nombre
@@ -66,6 +67,11 @@ namespace App_Futbol
             set { _nacionalidad = value; }
         }
 
+        public Equipo Equipo
+        {
+            get { return _equipo; }
+            set { _equipo = value; }
+        }
 
 
         // Constructor
