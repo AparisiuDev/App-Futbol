@@ -38,7 +38,7 @@ namespace App_Futbol
             Nombre = nombre;
         }
 
-        public void TraspasarPlayer(Jugador player, Equipo equipo)
+        public void VenderPlayer(Jugador player, Equipo equipo)
         {
             // Verificar si el jugador existe en la lista actual
             Jugador jugadorEnEquipo = Jugadores.FirstOrDefault(p => p.Nombre == player.Nombre);
@@ -55,6 +55,22 @@ namespace App_Futbol
                 // Actualizar la referencia del equipo en el jugador
                 jugadorEnEquipo.Equipo = equipo;
             }
+        }
+
+        public void ComprarPlayer(string player)
+        {
+            Random rng = new Random();
+            int edad = rng.Next(16, 41);
+            Console.WriteLine("Que dorsal le quieres dar?");
+            int dorsal = int.Parse(Console.ReadLine());
+            Console.WriteLine("¿Cuál es la posición del jugador?");
+            string posicion = Console.ReadLine();
+            Console.WriteLine("¿Cuál es la nacionalidad del jugador?");
+            string nacionalidad = Console.ReadLine();
+
+            if (Jugadores == null)
+                Jugadores = new List<Jugador>();
+            Jugadores.Add(new Jugador(player, dorsal, edad, posicion, nacionalidad));
         }
     }
 }

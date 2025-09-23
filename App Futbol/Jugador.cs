@@ -73,13 +73,7 @@ namespace App_Futbol
             set { _equipo = value; }
         }
 
-
         // Constructor
-        public Jugador()
-        {
-
-        }
-
         public Jugador(string nombre, int dorsal, int edad, string posicion, string nacionalidad)
         {
             Nombre = nombre;
@@ -88,9 +82,5 @@ namespace App_Futbol
             Posicion = posicion;
             Nacionalidad = nacionalidad;
         }
-
-
-
-
     }
 }
