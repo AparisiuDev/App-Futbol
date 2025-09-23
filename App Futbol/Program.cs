@@ -15,11 +15,11 @@ namespace App_Futbol
 
             List<Jugador> jugadores = new List<Jugador>
             {
-            new Jugador("Lionel Messi", 10, 36, "Delantero","Argentina"),
-            new Jugador("Cristiano Ronaldo", 7, 38, "Delantero", "Portugal"),
-            new Jugador("Kevin De Bruyne", 17, 32, "Centrocampista", "Bélgica"),
-            new Jugador("Virgil van Dijk", 4, 34, "Defensa", "Países Bajos"),
-            new Jugador("Thibaut Courtois", 1, 33, "Portero", "Bélgica")
+            new Jugador("Lionel Messi", 10, 36, "Delantero","Argentina", "Barça"),
+            new Jugador("Cristiano Ronaldo", 7, 38, "Delantero", "Portugal", "Barça"),
+            new Jugador("Kevin De Bruyne", 17, 32, "Centrocampista", "Bélgica", "Barça"),
+            new Jugador("Virgil van Dijk", 4, 34, "Defensa", "Países Bajos", "Barça"),
+            new Jugador("Thibaut Courtois", 1, 33, "Portero", "Bélgica", "Barça")
              };
             //Mostrar la lista de jugadores
             foreach (var jugador in jugadores)
