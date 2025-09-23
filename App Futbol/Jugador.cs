@@ -24,7 +24,7 @@ namespace App_Futbol
             get { return _nombre; }
             set { _nombre = value; }
         }
-        public int Numero
+        public int Dorsal
         {
             get { return _dorsal; }
             set { _dorsal = value; }
@@ -73,6 +73,22 @@ namespace App_Futbol
         {
 
         }
+
+        public Jugador(string nombre, int dorsal, int edad, string posicion,
+            bool esLesionado, int goles, int asistencias, string nacionalidad)
+        {
+            Nombre = nombre;
+            Dorsal = dorsal;
+            Edad = edad;
+            Posicion = posicion;
+            EsLesionado = esLesionado;
+            Goles = goles;
+            Asistencias = asistencias;
+            Nacionalidad = nacionalidad;
+        }
+
+
+
 
     }
 }
