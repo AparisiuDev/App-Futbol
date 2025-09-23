@@ -53,7 +53,7 @@ namespace App_Futbol
                 equipo.Jugadores.Add(jugadorEnEquipo);
 
                 // Actualizar la referencia del equipo en el jugador
-                jugadorEnEquipo.Equipo = equipo;
+                jugadorEnEquipo.Equipo = Nombre;
             }
         }
 
@@ -70,7 +70,7 @@ namespace App_Futbol
 
             if (Jugadores == null)
                 Jugadores = new List<Jugador>();
-            Jugadores.Add(new Jugador(player, dorsal, edad, posicion, nacionalidad));
+            Jugadores.Add(new Jugador(player, dorsal, edad, posicion, nacionalidad, Nombre));
         }
     }
 }

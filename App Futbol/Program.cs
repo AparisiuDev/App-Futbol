@@ -29,6 +29,18 @@ namespace App_Futbol
 
 
 
+            Equipo Barcelona = new Equipo("Barcelona");
+            Console.WriteLine("Que jugador quieres comprar?");
+            Barcelona.ComprarPlayer(Console.ReadLine());
+            
+            for (int i = 0; i < Barcelona.Jugadores.Count(); i++)
+            {
+                Console.WriteLine(Barcelona.Jugadores[i].Equipo);
+                Console.WriteLine(Barcelona.Jugadores[i].EsLesionado);
+                Console.WriteLine(Barcelona.Jugadores[i].Edad);
+                Console.WriteLine(Barcelona.Jugadores[i].Goles);
+            }
+            Console.ReadKey();
         }
     }
 }
