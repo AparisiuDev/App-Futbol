@@ -13,9 +13,9 @@ namespace App_Futbol
         private int _dorsal;
         private int _edad;
         private string _posicion;
-        private bool _esLesionado;
-        private int _goles;
-        private int _asistencias;
+        private bool _esLesionado = false;
+        private int _goles = 0;
+        private int _asistencias = 0;
         private string _nacionalidad;
         private Equipo _equipo;
 
@@ -80,16 +80,12 @@ namespace App_Futbol
 
         }
 
-        public Jugador(string nombre, int dorsal, int edad, string posicion,
-            bool esLesionado, int goles, int asistencias, string nacionalidad)
+        public Jugador(string nombre, int dorsal, int edad, string posicion, string nacionalidad)
         {
             Nombre = nombre;
             Dorsal = dorsal;
             Edad = edad;
             Posicion = posicion;
-            EsLesionado = esLesionado;
-            Goles = goles;
-            Asistencias = asistencias;
             Nacionalidad = nacionalidad;
         }
 

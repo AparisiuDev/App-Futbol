@@ -9,7 +9,7 @@ namespace App_Futbol
     internal class Equipo
     {
         private string _nombre;
-        private int _puntos;
+        private int _puntos = 0;
         private List<Jugador> _jugadorList;
 
         public string Nombre
@@ -38,10 +38,23 @@ namespace App_Futbol
             Nombre = nombre;
         }
 
-        public Equipo(string nombre, int puntos)
+        public void TraspasarPlayer(Jugador player, Equipo equipo)
         {
-            Nombre = nombre;
-            Puntos = puntos;
+            // Verificar si el jugador existe en la lista actual
+            Jugador jugadorEnEquipo = Jugadores.FirstOrDefault(p => p.Nombre == player.Nombre);
+            if (jugadorEnEquipo != null)
+            {
+                // Quitar el jugador de la lista actual
+                Jugadores.Remove(jugadorEnEquipo);
+                
+                // Agregar el jugador a la lista del equipo destino
+                if (equipo.Jugadores == null)
+                    equipo.Jugadores = new List<Jugador>();
+                equipo.Jugadores.Add(jugadorEnEquipo);
+
+                // Actualizar la referencia del equipo en el jugador
+                jugadorEnEquipo.Equipo = equipo;
+            }
         }
     }
 }
