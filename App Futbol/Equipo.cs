@@ -26,10 +26,7 @@ namespace App_Futbol
         public List<Jugador> Jugadores
         {
             get { return _jugadorList; }
-            
-            
             set { _jugadorList = value; }
-
         }
         public Equipo()
         {
