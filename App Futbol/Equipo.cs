@@ -63,7 +63,7 @@ namespace App_Futbol
             int edad = rng.Next(16, 41);
             Console.WriteLine("Que dorsal le quieres dar?");
             int dorsal = int.Parse(Console.ReadLine());
-            Console.WriteLine("¿Cuál es la posición del jugador?");
+            Console.WriteLine("¿Cuál es la posición del jugador? POR, DEF, MC, DEL");
             string posicion = Console.ReadLine();
             Console.WriteLine("¿Cuál es la nacionalidad del jugador?");
             string nacionalidad = Console.ReadLine();
@@ -71,6 +71,111 @@ namespace App_Futbol
             if (Jugadores == null)
                 Jugadores = new List<Jugador>();
             Jugadores.Add(new Jugador(player, dorsal, edad, posicion, nacionalidad, Nombre));
+        }
+
+        public void JugarPartido(string rival)
+        {
+            Random rng = new Random();
+            //Randomizar entre 0 y 5
+            int score1 = rng.Next(0, 6);
+            int score2 = rng.Next(0, 6);
+
+            Console.WriteLine("RESULTADO DEL PARTIDO:");
+            Console.WriteLine($"{Nombre} {score1} - {rival} {score2}");
+
+            //Repartir los goles y asistencias del equipo que controlamos
+            RepartirGoles(score1);
+            RepartirAsistencias(score1);
+        }
+
+        public void RepartirGoles(int goles)
+        {
+            if (Jugadores == null || Jugadores.Count == 0 || goles <= 0)
+                return;
+
+            Random rng = new Random();
+            for (int i = 0; i < goles; i++)
+            {
+                // Selecciona un jugador aleatorio
+                Jugador jugador = Jugadores[rng.Next(Jugadores.Count)];
+                int chance = rng.Next(0, 101); 
+
+                int probabilidad = 0;
+                switch (jugador.Posicion.ToUpper())
+                {
+                    case "POR":
+                        probabilidad = 0;
+                        break;
+                    case "DEF":
+                        probabilidad = 20;
+                        break;
+                    case "MC":
+                        probabilidad = 30;
+                        break;
+                    case "DEL":
+                        probabilidad = 50;
+                        break;
+                }
+
+                if (chance < probabilidad)
+                {
+                    jugador.AddGoals(1);
+                }
+                else
+                {
+                    // Repetir ciclo
+                    i--;
+                }
+            }
+
+        }
+
+        //Repartir assitencias
+        public void RepartirAsistencias(int asistencias)
+        {
+            if (Jugadores == null || Jugadores.Count == 0 || asistencias <= 0)
+                return;
+
+            Random rng = new Random();
+            for (int i = 0; i < asistencias; i++)
+            {
+                int chanceNoRepartir = rng.Next(0, 101); 
+                if (chanceNoRepartir < 5)
+                {
+                    // 5% no se reparte la asistencia
+                    continue;
+                }
+
+                Jugador jugador = Jugadores[rng.Next(Jugadores.Count)];
+                int chance = rng.Next(0, 101); 
+
+                int probabilidad = 0;
+                switch (jugador.Posicion.ToUpper())
+                {
+                    case "DEL":
+                        probabilidad = 40;
+                        break;
+                    case "MC":
+                        probabilidad = 30;
+                        break;
+                    case "DEF":
+                        probabilidad = 20;
+                        break;
+                    case "POR":
+                        probabilidad = 5;
+                        break;
+                }
+
+                if (chance < probabilidad)
+                {
+                    jugador.AddAssists(1);
+                }
+                else
+                {
+                    //Repetir ciclo
+                    i--;
+                }
+            }
         }
     }
 }

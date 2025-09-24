@@ -92,7 +92,22 @@ namespace App_Futbol
                 $"Lesionado: {EsLesionado}, Goles: {Goles}, Asistencias: {Asistencias}, Nacionalidad: {Nacionalidad}";
         }
 
+        //Añadir gol y asistencia
+        public void AddGoals(int n)
+        {
+            Goles += n;
+        }
 
+        public void AddAssists(int n)
+        {
+            Asistencias += n;
+        }
+
+        //Cambiar lesion
+        public void LesionesSwitch()
+        {
+            EsLesionado = !EsLesionado;
+        }
 
     }
 }

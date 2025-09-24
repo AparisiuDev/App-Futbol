@@ -12,7 +12,7 @@ namespace App_Futbol
         {
 
             //Lista de Jugadores
-
+            /***
             List<Jugador> jugadores = new List<Jugador>
             {
             new Jugador("Lionel Messi", 10, 36, "Delantero","Argentina", "Barça"),
@@ -26,10 +26,11 @@ namespace App_Futbol
             {
                 Console.WriteLine(jugador);
             }
-
+            ***/
 
 
             Equipo Barcelona = new Equipo("Barcelona");
+            Equipo Getafe = new Equipo("Getafe");
             Console.WriteLine("Que jugador quieres comprar?");
             Barcelona.ComprarPlayer(Console.ReadLine());
             
@@ -40,6 +41,8 @@ namespace App_Futbol
                 Console.WriteLine(Barcelona.Jugadores[i].Edad);
                 Console.WriteLine(Barcelona.Jugadores[i].Goles);
             }
+            Console.WriteLine("Contra quien quieres jugar?");
+            Barcelona.JugarPartido(Console.ReadLine());
             Console.ReadKey();
         }
     }
