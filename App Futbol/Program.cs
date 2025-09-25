@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,6 +32,18 @@ namespace App_Futbol
                 tuEquipo = new Equipo(nombreEquipo);
             }
 
+
+            // Guardar el nombre del equipo en un archivo TXT
+            string relativePath = "miEquipo.txt"; // archivo en la carpeta de salida
+            //File.WriteAllText(relativePath, $"Equipo: {nombreEquipo}");
+
+            //Console.WriteLine($"Archivo creado: {Path.GetFullPath(relativePath)}");
+
+
+            using (StreamWriter writer = new StreamWriter(relativePath))
+            {
+                
+            }
 
             while (exit==false)
             {
