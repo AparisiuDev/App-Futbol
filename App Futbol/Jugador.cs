@@ -9,7 +9,7 @@ namespace App_Futbol
     internal class Jugador
     {
         // Atributos
-        private string _nombre;
+        //private string _nombre;
         private int _dorsal;
         private int _edad;
         private string _posicion;
@@ -20,11 +20,14 @@ namespace App_Futbol
         private string _equipo;
 
         // Propiedades
-        public string Nombre
-        {
-            get { return _nombre; }
-            set { _nombre = value; }
-        }
+        //public string Nombre
+        //{
+        //    get { return _nombre; }
+        //    set { _nombre = value; }
+        //}
+
+        //Forma corta de hacer la propiedad
+        public string Nombre { get; set; }
         public int Dorsal
         {
             get { return _dorsal; }
