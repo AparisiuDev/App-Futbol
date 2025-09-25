@@ -11,39 +11,40 @@ namespace App_Futbol
         static void Main(string[] args)
         {
 
-            //Lista de Jugadores
-            /***
-            List<Jugador> jugadores = new List<Jugador>
+          
+            bool exit = false;
+            Console.WriteLine("Como quieres llamar a tu equipo?");
+            string nombreEquipo = Console.ReadLine();
+            Equipo tuEquipo = new Equipo(nombreEquipo);
+
+            while (exit==false)
             {
-            new Jugador("Lionel Messi", 10, 36, "Delantero","Argentina", "Barça"),
-            new Jugador("Cristiano Ronaldo", 7, 38, "Delantero", "Portugal", "Barça"),
-            new Jugador("Kevin De Bruyne", 17, 32, "Centrocampista", "Bélgica", "Barça"),
-            new Jugador("Virgil van Dijk", 4, 34, "Defensa", "Países Bajos", "Barça"),
-            new Jugador("Thibaut Courtois", 1, 33, "Portero", "Bélgica", "Barça")
-             };
-            //Mostrar la lista de jugadores
-            foreach (var jugador in jugadores)
-            {
-                Console.WriteLine(jugador);
+                Console.WriteLine("Bienvenido al gestor de fútbol, qué quieres hacer?\n" +
+              "1. Para crear un Jugador\n" +
+              "2. Listar un Jugador\n");
+                int opcion = int.Parse(Console.ReadLine());
+                switch (opcion)
+                {
+                    case 1:
+                        Console.WriteLine("Has elegido la opción 1: Crear Jugador\n"+
+                            "Qué jugador quieres comprar?");
+                        tuEquipo.ComprarPlayer(Console.ReadLine());
+                        //exit = true;
+                        break;
+                    case 2:
+                        Console.WriteLine("Has elegido la opción 2: Listar Jugadores");
+                        // Aquí iría el código para listar los jugadores
+                        break;
+                    default:
+                        Console.WriteLine("Opción no válida.");
+                        break;
+                }
+
             }
-            ***/
 
 
-            Equipo Barcelona = new Equipo("Barcelona");
-            Equipo Getafe = new Equipo("Getafe");
-            Console.WriteLine("Que jugador quieres comprar?");
-            Barcelona.ComprarPlayer(Console.ReadLine());
-            
-            for (int i = 0; i < Barcelona.Jugadores.Count(); i++)
-            {
-                Console.WriteLine(Barcelona.Jugadores[i].Equipo);
-                Console.WriteLine(Barcelona.Jugadores[i].EsLesionado);
-                Console.WriteLine(Barcelona.Jugadores[i].Edad);
-                Console.WriteLine(Barcelona.Jugadores[i].Goles);
-            }
-            Console.WriteLine("Contra quien quieres jugar?");
-            Barcelona.JugarPartido(Console.ReadLine());
-            Console.ReadKey();
+
+           
         }
     }
 }
