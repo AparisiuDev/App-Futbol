@@ -10,6 +10,9 @@ namespace App_Futbol
     {
         private string _nombre;
         private int _puntos = 0;
+        private int _victorias = 0;
+        private int _derrotas = 0;
+        private int _empates = 0;
         private List<Jugador> _jugadorList;
 
         public string Nombre
@@ -21,6 +24,22 @@ namespace App_Futbol
         {
             get { return _puntos; }
             set { _puntos = value; }
+        }
+
+        public int Victorias
+        {
+            get { return _victorias; }
+            set { _victorias = value; }
+        }
+        public int Derrotas
+        {
+            get { return _derrotas; }
+            set { _derrotas = value; }
+        }
+        public int Empates
+        {
+            get { return _empates; }
+            set { _empates = value; }
         }
 
         public List<Jugador> Jugadores
@@ -41,7 +60,7 @@ namespace App_Futbol
         public void VenderPlayer(Jugador player, Equipo equipo)
         {
             // Verificar si el jugador existe en la lista actual
-            Jugador jugadorEnEquipo = Jugadores.FirstOrDefault(p => p.Nombre == player.Nombre);
+            Jugador jugadorEnEquipo = Jugadores.First(p => p.Nombre == player.Nombre);
             if (jugadorEnEquipo != null)
             {
                 // Quitar el jugador de la lista actual
@@ -65,9 +84,9 @@ namespace App_Futbol
             Console.WriteLine("Que dorsal le quieres dar?");
             int dorsal = int.Parse(Console.ReadLine());
             Console.WriteLine("¿Cuál es la posición del jugador? POR, DEF, MC, DEL");
-            string posicion = Console.ReadLine();
+            string posicion = Console.ReadLine().ToUpper();
             Console.WriteLine("¿Cuál es la nacionalidad del jugador?");
-            string nacionalidad = Console.ReadLine();
+            string nacionalidad = Console.ReadLine().ToUpper();
 
             if (Jugadores == null)
                 Jugadores = new List<Jugador>();
@@ -89,9 +108,17 @@ namespace App_Futbol
             RepartirAsistencias(score1);
             //Puntos
             if (score1 > score2)
+            {
                 Puntos += 3;
+                Victorias++;
+            }
             if (score1 == score2)
+            {
                 Puntos++;
+                Empates++;
+            }
+            else 
+                Derrotas++;
         }
 
         public void RepartirGoles(int goles)
@@ -179,7 +206,9 @@ namespace App_Futbol
         // Esneñar estadiscitcas de todos los jugadores del equipo
         public void ShowAllStats()
         {
-            Console.WriteLine("----ESTADISTICAS DE TODOS LOS JUGADORES----");
+            Console.WriteLine($"\n---ESTADISTICAS DEL CLUB----");
+            Console.WriteLine($"W:{Victorias} D: {Empates} L: {Derrotas}");
+            Console.WriteLine("\n----ESTADISTICAS DE TODOS LOS JUGADORES----");
             foreach (Jugador jugador in Jugadores)
                 Console.WriteLine($" {jugador.Dorsal} {jugador.Nombre} {jugador.Nacionalidad} - G:{jugador.Goles} A:{jugador.Asistencias}");
         }

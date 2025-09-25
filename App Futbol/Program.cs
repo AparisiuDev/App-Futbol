@@ -37,7 +37,7 @@ namespace App_Futbol
                 Console.Clear();
                 Console.WriteLine("Bienvenido al gestor de fútbol, qué quieres hacer?\n" +
                   "1. Para crear un Jugador\n" +
-                  "2. Listar un Jugador\n" + 
+                  "2. Ver estadisticas\n" + 
                   "3. Jugar un partido\n" +
                   "0. Salir\n");
 
