@@ -50,6 +50,7 @@ namespace App_Futbol
                 // Agregar el jugador a la lista del equipo destino
                 if (equipo.Jugadores == null)
                     equipo.Jugadores = new List<Jugador>();
+
                 equipo.Jugadores.Add(jugadorEnEquipo);
 
                 // Actualizar la referencia del equipo en el jugador
@@ -86,6 +87,11 @@ namespace App_Futbol
             //Repartir los goles y asistencias del equipo que controlamos
             RepartirGoles(score1);
             RepartirAsistencias(score1);
+            //Puntos
+            if (score1 > score2)
+                Puntos += 3;
+            if (score1 == score2)
+                Puntos++;
         }
 
         public void RepartirGoles(int goles)
@@ -141,10 +147,7 @@ namespace App_Futbol
             {
                 int chanceNoRepartir = rng.Next(0, 101); 
                 if (chanceNoRepartir < 5)
-                {
-                    // 5% no se reparte la asistencia
                     continue;
-                }
 
                 Jugador jugador = Jugadores[rng.Next(Jugadores.Count)];
                 int chance = rng.Next(0, 101); 
@@ -167,15 +170,18 @@ namespace App_Futbol
                 }
 
                 if (chance < probabilidad)
-                {
-                    jugador.AddAssists(1);
-                }
+                   jugador.AddAssists(1);
                 else
-                {
-                    //Repetir ciclo
                     i--;
-                }
             }
+        }
+
+        // Esneñar estadiscitcas de todos los jugadores del equipo
+        public void ShowAllStats()
+        {
+            Console.WriteLine("----ESTADISTICAS DE TODOS LOS JUGADORES----");
+            foreach (Jugador jugador in Jugadores)
+                Console.WriteLine($" {jugador.Dorsal} {jugador.Nombre} {jugador.Nacionalidad} - G:{jugador.Goles} A:{jugador.Asistencias}");
         }
     }
 }
