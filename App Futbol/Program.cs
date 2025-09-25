@@ -33,18 +33,6 @@ namespace App_Futbol
             }
 
 
-            // Guardar el nombre del equipo en un archivo TXT
-            string relativePath = "miEquipo.txt"; // archivo en la carpeta de salida
-            //File.WriteAllText(relativePath, $"Equipo: {nombreEquipo}");
-
-            //Console.WriteLine($"Archivo creado: {Path.GetFullPath(relativePath)}");
-
-
-            using (StreamWriter writer = new StreamWriter(relativePath))
-            {
-                
-            }
-
             while (exit==false)
             {
                 Console.Clear();
@@ -52,7 +40,7 @@ namespace App_Futbol
                   "1. Para crear un Jugador\n" +
                   "2. Ver estadisticas\n" + 
                   "3. Jugar un partido\n" +
-                  "0. Salir\n");
+                  "0. Salir (Se guardará los Jugadores Creados)\n");
 
                 int opcion = int.Parse(Console.ReadLine());
 
@@ -67,7 +55,7 @@ namespace App_Futbol
                         break;
                     case 2:
                         Console.Clear();
-                        Console.WriteLine("Has elegido la opción 2: Listar Jugadores");
+                        Console.WriteLine("Has elegido la opción 2: Listar Jugadores\n");
                         // Aquí iría el código para listar los jugadores
                         tuEquipo.ShowAllStats();
                         Console.ReadKey();
