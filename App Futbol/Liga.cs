@@ -8,25 +8,30 @@ namespace App_Futbol
 {
     internal class Liga
     {
-        private List<Equipo> _laLiga;
+        private List<Equipo> _equipos;
 
-        public List<Equipo> LaLiga
+        public List<Equipo> Equipos
         {
-            get { return _laLiga; }
-            set { _laLiga = value; }
+            get { return _equipos; }
+            set { _equipos = value; }
+        }
+
+        public Liga()
+        {
+            _equipos = new List<Equipo>();
         }
 
         public void AddTeam()
         {
             Console.WriteLine("Añade el nombre del nuevo equipo!");
             Equipo equipo = new Equipo(Console.ReadLine());
-            LaLiga.Add(equipo);
+            Equipos.Add(equipo);
         }
 
         public void OrdenarPorPuntos()
         {
             // Ordenar de mayor a menor
-            _laLiga = _laLiga.OrderByDescending(e => e.Puntos).ToList();
+            _equipos = _equipos.OrderByDescending(e => e.Puntos).ToList();
         }
 
         public void MostrarClasificacion()
@@ -34,10 +39,10 @@ namespace App_Futbol
             OrdenarPorPuntos();
 
             Console.WriteLine("=== Clasificación de LaLiga ===");
-            int pos = 1;
-            foreach (var equipo in _laLiga)
+            int pos = 0;
+            foreach (var equipo in _equipos)
             {
-                Console.WriteLine($"{pos}. {equipo.Nombre} - {equipo.Puntos} pts");
+                Console.WriteLine($"{pos+1}. {equipo.Nombre} - {equipo.Puntos} pts");
                 pos++;
             }
         }
@@ -50,7 +55,7 @@ namespace App_Futbol
             int score2 = rng.Next(0, 6);
             //Resultado
             Console.WriteLine("RESULTADO DEL PARTIDO:");
-            Console.WriteLine($"{team1.Nombre} {score1} - {team2} {score2}");
+            Console.WriteLine($"{team1.Nombre} {score1} - {team2.Nombre} {score2}");
 
             //Repartir los goles y asistencias de los equipos
             team1.RepartirGoles(score1);
