@@ -32,7 +32,7 @@ namespace App_Futbol
             }
 
 
-            while (exit==false)
+            while (!exit)
             {
                 Console.Clear();
                 Console.WriteLine("Bienvenido al gestor de fútbol, qué quieres hacer?\n" +

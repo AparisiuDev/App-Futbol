@@ -93,33 +93,6 @@ namespace App_Futbol
             Jugadores.Add(new Jugador(player, dorsal, edad, posicion, nacionalidad, Nombre));
         }
 
-        public void JugarPartido(string rival)
-        {
-            Random rng = new Random();
-            //Randomizar entre 0 y 5
-            int score1 = rng.Next(0, 6);
-            int score2 = rng.Next(0, 6);
-
-            Console.WriteLine("RESULTADO DEL PARTIDO:");
-            Console.WriteLine($"{Nombre} {score1} - {rival} {score2}");
-
-            //Repartir los goles y asistencias del equipo que controlamos
-            RepartirGoles(score1);
-            RepartirAsistencias(score1);
-            //Puntos
-            if (score1 > score2)
-            {
-                Puntos += 3;
-                Victorias++;
-            }
-            if (score1 == score2)
-            {
-                Puntos++;
-                Empates++;
-            }
-            else 
-                Derrotas++;
-        }
 
         public void RepartirGoles(int goles)
         {
